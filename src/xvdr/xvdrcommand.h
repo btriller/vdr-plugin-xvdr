@@ -24,7 +24,7 @@
 #define XVDR_COMMAND_H
 
 /** Current XVDR Protocol Version number */
-#define XVDR_PROTOCOLVERSION          4
+#define XVDR_PROTOCOLVERSION          5
 
 
 /** Packet types */
