@@ -2,6 +2,7 @@
  *      vdr-plugin-xvdr - XVDR server plugin for VDR
  *
  *      Copyright (C) 2010 Alwin Esch (Team XBMC)
+ *      Copyright (C) 2012 Alexander Pipelka
  *
  *      https://github.com/pipelka/vdr-plugin-xvdr
  *
@@ -22,22 +23,23 @@
  *
  */
 
-#include <stdlib.h>
-#include <assert.h>
+#ifndef XVDR_DEMUXER_EAC3_H
+#define XVDR_DEMUXER_EAC3_H
 
-#include "demuxer_DTS.h"
-#include "bitstream.h"
+#include "parser.h"
 
-cParserDTS::cParserDTS(cTSDemuxer *demuxer)
- : cParser(demuxer)
+class cParserEAC3 : public cParser
 {
-}
+public:
 
-cParserDTS::~cParserDTS()
-{
-}
+  cParserEAC3(cTSDemuxer *demuxer);
 
-void cParserDTS::Parse(unsigned char *data, int size, bool pusi)
-{
+protected:
 
-}
+  void ParsePayload(unsigned char* payload, int length);
+
+  bool CheckAlignmentHeader(unsigned char* buffer, int& framesize);
+
+};
+
+#endif // XVDR_DEMUXER_EAC3_H
